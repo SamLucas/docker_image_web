@@ -10,7 +10,7 @@ RUN apt-get update && apt-get upgrade -y  \
 && dpkg-reconfigure --frontend noninteractive tzdata
 
 RUN apt-get install php php-pear php-fpm php-dev php-zip php-curl \
-php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php apache2 wget nano git sudo -y
+php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php apache2 wget nano -y
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
