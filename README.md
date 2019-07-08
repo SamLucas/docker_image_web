@@ -22,13 +22,6 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === '48e3236262b34d30969dc
 php composer-setup.php && \
 php -r "unlink('composer-setup.php');"
 
-RUN apt-get install sudo -y
-RUN useradd -ms /bin/bash web
-RUN adduser web sudo
-RUN echo 'web:web' |chpasswd
-
-USER web
-
 WORKDIR /var/www/html/
 
 EXPOSE 80
@@ -43,7 +36,7 @@ ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
 # Instructions for use
 
-This image was created with the goal of having a web server quickly, in this image .htaccess and php are configured and protos for use. ports 80 and 443 are exposed along with the volume in the `/ var / www / html` directory just below you find a hint of how you might be using it. User and password: `web:web`.
+This image was created with the goal of having a web server quickly, in this image .htaccess and php are configured and protos for use. ports 80 and 443 are exposed along with the volume in the `/ var / www / html` directory just below you find a hint of how you might be using it. 
 
 ```
 $ sudo docker run -d -p 80:80 -p 443:433 -v  myproject/:/var/www/html/ --name web_server samuellucas/web 
